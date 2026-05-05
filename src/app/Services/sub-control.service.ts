@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResponseDataView, SendData, StudentsAppliedExam } from '../Interface/data';
+import { HallSammryData, ResponseDataView, SendData, StudentsAppliedExam } from '../Interface/data';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -20,7 +20,9 @@ export class SubControlService {
   GetAllFileNamesInFolder(data: SendData): Observable<string[]> {
     return this._HttpClient.post<string[]>(`${this.BaseUrl}/api/SubControl/GetAllFileNamesInFolder`, data, { headers: this.header });
   }
-
+ HallSummryDatas(data: SendData): Observable<HallSammryData[]> {
+    return this._HttpClient.post<HallSammryData[]>(`${this.BaseUrl}/api/SubControl/HallSummryDatas`, data, { headers: this.header });
+  }
 
 
 

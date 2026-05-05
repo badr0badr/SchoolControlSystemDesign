@@ -67,27 +67,92 @@ th.rotated-header{
     background-color: #EAEFEF !important;
 }
 
-@media print{
-    @page {
-        size: A4;
-        margin: 10mm;
+@media print {
+    @page A4-portrait {
+        size: A4 portrait;
     }
+    @page A4-landscape {
+        size: A4 landscape;
+    }
+    @page A3-portrait {
+        size: A3 portrait;
+    }
+    @page A3-landscape {
+        size: A3 landscape;
+    }
+    @page A5-portrait {
+        size: A5 portrait;
+    }
+    @page A5-landscape {
+        size: A5 landscape;
+    }
+
     body * {
         visibility: hidden;
         margin: 0;
         padding: 0;
     }
-    .printable-area, .printable-area * {
+
+    .printable-area,
+    .printable-area * {
         visibility: visible !important;
     }
-    .printable-area{
+
+    .printable-area {
         position: absolute;
         top: 0;
         left: 0;
+        background: white;
+        box-shadow: none;
+        overflow: hidden;
+    }
+
+    .A4-p {
+        page: A4-portrait;
         width: 210mm;
         min-height: 297mm;
         margin: 0 auto;
-        background: white;
-        box-shadow: none;
     }
+    .A4-l {
+        page: A4-landscape;
+        width: 297mm;
+        min-height: 210mm;
+        margin: 0 auto;
+    }
+    .A3-p {
+        page: A3-portrait;
+        width: 297mm;
+        min-height: 420mm;
+        margin: 0 auto;
+    }
+    .A3-l {
+        page: A3-landscape;
+        width: 420mm;
+        min-height: 297mm;
+        margin: 0 auto;
+    }
+    .A5-p {
+        page: A5-portrait;
+        width: 148mm;
+        min-height: 210mm;
+        margin: 0 auto;
+    }
+    .A5-l {
+        page: A5-landscape;
+        width: 210mm;
+        min-height: 148mm;
+        margin: 0 auto;
+    }
+}
+.A4-p-frame {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+.A4-l-frame {
+    width: 297mm;
+    min-height: 200mm;
+    margin: 0 auto;
+    border: 1px solid black;
 }

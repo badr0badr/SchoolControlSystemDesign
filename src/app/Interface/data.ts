@@ -25,4 +25,14 @@ export interface GetControlTeachers {
     name: string;
     controlType: string;
 }
+export interface HallSammryData {
+  schoolName: string;
+  hallNumber: number;
+  className: string;
+  from: number;
+  to: number;
+  studentsCount: number;
+  cM: string;
+  sM: string;
+}
 

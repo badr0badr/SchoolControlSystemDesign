@@ -1,1 +1,56 @@
-<p>hall-summary-data works!</p>
+      <div class="controls">
+        <button class="print-btn" (click)="print()">
+          <i class="fas fa-print"></i> طباعة
+        </button>
+      </div>
+<div class="printable-area"> 
+      @for (data of halls; track $index) {
+      <div class="A4-l A4-l-frame" dir="rtl">
+        <!-- Header -->
+        <div class="document-header">
+          <div class="header-line">مديرية التربية والتعليم بمحافظة المنوفية</div>
+          <div class="header-line">إدارة سرس الليان التعليمية</div>
+          <div class="header-line">مدرسة {{ data.schoolName }}</div>
+        </div>
+        
+        <!-- Title -->
+        <div class="document-title">
+          <h2>كشف مناداة لجنة رقم ({{ data.hallNumber }})</h2>
+        </div>
+        
+        <!-- Class Name -->
+        <div class="document-subtitle">
+          <h3>الصف {{ data.className }}</h3>
+        </div>
+        
+        <!-- From/To Range -->
+        <div class="range-section">
+          <div class="range-box">
+            <div class="range-label">من</div>
+            <div class="range-value">{{ data.from }}</div>
+          </div>
+          <div class="range-box">
+            <div class="range-label">إلى</div>
+            <div class="range-value">{{ data.to }}</div>
+          </div>
+        </div>
+        
+        <!-- Student Count -->
+        <div class="student-count">
+          <div>عدد التلاميذ في اللجنة : {{ data.studentsCount }}</div>
+        </div>
+        
+        <!-- Signatures -->
+        <div class="signatures-section">
+          <div class="signature-box">
+            <div class="signature-title">رئيس لجنة النظام والمراقبة</div>
+            <div class="signature-name">{{ data.cM }}</div>
+          </div>
+          <div class="signature-box">
+            <div class="signature-title">مدير إدارة المدرسة</div>
+            <div class="signature-name">{{ data.sM }}</div>
+          </div>
+        </div>
+      </div>
+    }
+    </div>

@@ -33,6 +33,9 @@
         <li class="nav-item">
           <a class="nav-link" (click)="ChangSection('ControlPdfs')">الملفات</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('HallSummaryData')">كشف مناداة</a>
+        </li>
         }
         @if(Userdata.controlType==='ControlManager')
         {
@@ -69,6 +72,11 @@
     @if(SectionName==='AddToControl') {
   <section>
     <app-add-workers></app-add-workers>
+  </section>
+  }
+    @if(SectionName==='HallSummaryData') {
+  <section>
+    <app-hall-summary-data></app-hall-summary-data>
   </section>
   }
 </div>
