@@ -1,0 +1,97 @@
+.box {
+    width: 100%;
+    max-width: 560px;
+    height: 560px;
+    padding: 60px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(0, 3, 48, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(191, 149, 63, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 0.3s ease;
+}
+
+.box h3 label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-weight: bold;
+    color: #000330; 
+}
+
+
+input.form-control, select.form-control {
+    background-color: #ffffff !important;
+    border: 1px solid #ced4da;
+    opacity: 0.9;
+    color: #000 !important;
+}
+
+.box .btn {
+    background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728) !important;
+    border: none !important;
+    color: #000330 !important;
+    font-weight: bold;
+    height: 50px;
+}
+
+.page-bg img {
+    width: 550px;
+    object-fit: contain;
+}
+
+.page-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; 
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+select.form-control {
+    appearance: none !important;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23000330' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 15px center; 
+    background-size: 20px;
+    padding-left: 40px; 
+}
+
+@media (max-width: 767px) {
+    .box {
+        padding: 20px 20px;
+        margin-top: 0;
+        position: relative;
+        z-index: 1;
+        height: auto; 
+    }
+    input, .form-control {
+        width: 100%;
+    }
+    .page-bg {
+        position: fixed;
+        padding: 0px 20px;
+        top: 0;
+        left: 52%; 
+        width: 100%;
+        height: auto;
+        z-index: 2;
+        opacity: 0.2;
+        pointer-events: none;
+    }
+    .page-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

@@ -1,0 +1,49 @@
+@if (isloading) {
+<div
+  class="loadingscreen position-fixed z-3 top-0 bottom-0 start-0 end-0 bg-white d-flex justify-content-center align-items-center">
+  <span class="loader"></span>
+</div>
+}
+<div class="scanner-container">
+  <zxing-scanner (scanSuccess)="onCodeResult($event)" (permissionResponse)="onPermissionResponse($event)">
+  </zxing-scanner>
+  <!-- Scan frame -->
+  <div class="scan-frame"></div>
+</div>
+@if (VAlert) {
+<div class="ViewAlert position-fixed z-3 top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center">
+  <div class="bg-white p-5 rounded">
+    <div class="text-center my-4">
+      <div class="font-style">
+        @if (Response.status === 200) {
+        <div class="p-md-5 m-md-5 p-2 m-2 text-center">
+          <div class="alert alert-success" role="alert">
+            <i class="fa-solid fa-check"></i>
+            <div>{{ Response.message }}</div>
+          </div>
+        </div>
+        }
+        @if (Response.status !== 200 && apierror==='') {
+        <div class="p-md-5 m-md-5 p-2 m-2 text-center">
+          <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-xmark mb-3"></i>
+            <div>{{ Response.message }}</div>
+          </div>
+        </div>
+        }
+        @if (apierror !== '') {
+        <div class="p-md-5 m-md-5 p-2 m-2 text-center">
+          <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-xmark mb-3"></i>
+            <div>{{ apierror }}</div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="d-flex justify-content-between my-3">
+      <button (click)="ViewAlert()" class="btn btn-primary">إلغاء</button>
+    </div>
+  </div>
+</div>
+}

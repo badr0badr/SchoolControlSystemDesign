@@ -1,0 +1,103 @@
+@if (Students.length === 0) {
+<div class="row mt-3">
+    <div class="col-md-3 mt-2">
+        <label for="ClassId">الفصل</label>
+        <select class="form-control" name="ClassId" [(ngModel)]="ClassId">
+            @for (opt of ClassIds; track opt.id) {
+            <option [value]="opt.id">{{ opt.name }}</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3 mt-2">
+        <label for="SubjectId"> المادة</label>
+        <select class="form-control" name="SubjectId" [(ngModel)]="SubjectId">
+            @for (opt of SubjectIds; track opt.id) {
+            <option [value]="opt.id">{{ opt.name }}</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3 mt-2 text-center">
+        <button (click)="IsClassExist()" class="btn btn-primary ms-auto mt-3">الحصول</button>
+    </div>
+</div>
+}
+
+@if (apierror) {
+<div class="alert alert-danger p-0 mt-1">
+    <p class="m-0 p-1">{{apierror}}</p>
+</div>
+}
+
+@if (Students.length > 0) {
+<div class="row mt-3">
+    <div class="my-2">
+        <h4 class="text-success text-center mb-3">فصل : {{ClassIds.find(c => c.id === ClassId)?.name}} | المادة :
+            {{SubjectIds.find(s => s.id === SubjectId)?.name}}</h4>
+    </div>
+    <div class="col-md-6 my-2">
+        <label>الطالب</label>
+        <select class="form-control mb-3" name="ClassId" [(ngModel)]="studentId" (change)="changestudentIndex()">
+            <option disabled selected value=''>طالب</option>
+            @for (opt of Students; track opt.studentId) {
+            <option [value]="opt.studentId">{{ opt.studentName }}</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-6 d-flex align-items-center justify-content-center my-2">
+        <h5>الطالب : {{StudentIndex+1}}) {{Students[StudentIndex]?.studentName}}</h5>
+    </div>
+    <div class="col-md-4 my-2">
+        <label>تقييم الشهري</label>
+        <input type="number" class="form-control" name="Review" [(ngModel)]="Review" (input)="ValidateReview()" />
+        @if (IsValidR === false) {
+        <div class="alert alert-danger p-0 mt-1">
+            <p class="m-0 p-1">الدرجه بين 0 الي 15</p>
+        </div>
+        }
+    </div>
+    <div class="col-md-2 my-2">
+        <label>إضافة للكل</label>
+        <input type="checkbox" class="form-check-input ms-2" name="IsForAll" [(ngModel)]="IsForAll"
+            (change)="IsAll()" />
+    </div>
+    <button [disabled]="Review===undefined|| IsValid===false" (click)="SaveScore()"
+        class="btn btn-primary ms-auto mt-3 d-block">إضافة درجه</button>
+</div>
+<div class="row mt-3">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">م</th>
+                <th>الاسم</th>
+                <th>تقييم الشهري</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (student of Students; track student; let i = $index) {
+            <tr>
+                <td class="text-center">{{ i + 1 }}</td>
+                <td>{{ student.studentName }}</td>
+                <td>{{ student.score }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-center my-3">
+    <button (click)="ViewAlert()" class="btn btn-primary">حفظ الدرجات </button>
+</div>
+}
+
+@if (VAlert) {
+<div class="ViewAlert position-fixed z-3 top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center">
+    <div class="bg-white p-5 rounded">
+        <div class="text-center my-4">
+            <h2>هل تريد تأكيد حفظ بيانات الطلاب</h2>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <button (click)="SaveStudentScore()" class="btn btn-primary">تأكيد حفظ الدرجات</button>
+            <button (click)="ViewAlert()" class="btn btn-primary">إلغاء</button>
+        </div>
+    </div>
+</div>
+}

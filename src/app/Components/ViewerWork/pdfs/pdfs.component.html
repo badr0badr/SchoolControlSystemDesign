@@ -1,0 +1,23 @@
+<div class="row my-4">
+    <div class="col-md-12 d-flex align-items-center justify-content-center my-2">
+        <h2>الملفات المتاحة للتحميل</h2>
+    </div>
+    <div class="col-md-12 my-2">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center">م</th>
+                    <th>اسم الملف</th>
+                    <th class="text-center">تحميل</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (pdf of PdfNames; track pdf; let i = $index) {
+                <tr>
+                    <td class="text-center">{{ i + 1 }}</td>
+                    <td>{{ pdf }}</td>
+                    <td class="text-center"><button (click)="Download(pdf)" class="btn btn-primary">تحميل</button></td>
+                </tr>
+                }
+            </tbody>
+        </table>

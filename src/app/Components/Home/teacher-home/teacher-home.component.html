@@ -1,0 +1,63 @@
+@if (isloading) {
+<div
+  class="loadingscreen position-fixed z-3 top-0 bottom-0 start-0 end-0 bg-white d-flex justify-content-center align-items-center">
+  <span class="loader"></span>
+</div>
+}
+@if (apierror) {
+<div class="alert alert-danger p-0 mt-1">
+  <p class="m-0 p-1">{{apierror}}</p>
+</div>
+}
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <img src="../../../../assets/Mlogo.png" alt="logo" class="logo me-2">
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav d-flex justify-content-center w-100 ">
+        @if(Userdata.controlType==='Adder')
+        {
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('AddAppliedExam')">الإمتحان العملي</a>
+        </li>
+        }
+        @if(Userdata.controlType==='Viewer')
+        {
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('ControlPdfs')">الملفات</a>
+        </li>
+        }
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="btn btn-danger Logoutbtn" (click)="Logout()">تسجيل خروج <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="box">
+  <div class="title-div d-flex justify-content-between align-items-center p-2 bg-box fw-bold rounded-3 end-0 start-0">
+    <div>الاسم: {{Userdata.name}}</div>
+    <div dir="rtl">الصفة : {{Userdata.role}}</div>
+  </div>
+</div>
+<div class="container-fluid">
+  @if(SectionName==='AddAppliedExam') {
+  <section>
+    <app-add-applied-exam></app-add-applied-exam>
+  </section>
+  }
+  @if(SectionName==='ControlPdfs') {
+  <section>
+    <app-pdfs></app-pdfs>
+  </section>
+  }
+</div>

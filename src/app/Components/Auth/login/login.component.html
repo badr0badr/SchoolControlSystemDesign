@@ -1,0 +1,66 @@
+@if (isloading) {
+<div
+    class="loadingscreen position-fixed z-3 top-0 bottom-0 start-0 end-0 bg-white d-flex justify-content-center align-items-center">
+    <span class="loader"></span>
+</div>
+}
+
+<div class="page-bg">
+    <img src="../../../../assets/Mlogo.png" alt="logo">
+</div>
+
+<div class="row my-4 ">
+    <div class="position-fixed top-0 bottom-0 start-0 end-0">
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <form [formGroup]="loginform" (ngSubmit)="submitlogin(loginform)" class="box">
+                @if (apierror) {
+                <div class="alert alert-danger p-0 mt-1">
+                    <p class="m-0 p-1">{{apierror}}</p>
+                </div>
+                }
+                <h1 class="text-center fw-bold text-black"> تسجيل الدخول </h1>
+                <div class="my-2">
+                    <h3> <label for="School">اسم الجهة</label></h3>
+                    <select name="School" id="School" class="form-control" required formControlName="School" (change)="ChangeTeachers()">
+                        <option disabled selected value=''>اسم المدرسة</option>
+                        @for (opt of Schools; track opt.id) {
+                        <option [value]="opt.id">{{ opt.name }}</option>
+                        }
+                    </select>
+                </div>
+                <div class="my-2">
+                    <h3> <label for="userName">اسم المستخدم </label></h3>
+                    <select name="userName" id="userName" class="form-control" required formControlName="userName">
+                        <option disabled selected value=''>اسم المستخدم</option>
+                        @for (opt of users; track opt.id) {
+                        <option [value]="opt.id">{{ opt.name }}</option>
+                        }
+                    </select>
+                </div>
+                <div class="my-2">
+                    <h3> <label for="password">كلمة المرور</label></h3>
+                    <input formControlName="password" type="password" id="password" name="password" class="form-control"
+                        required>
+                    @if (loginform.get('password')?.touched && loginform.get('password')?.errors) {
+                    <div class="alert alert-danger p-0 mt-1">
+                        @if (loginform.get('password')?.errors?.['required']) {
+                        <p class="m-0 p-1"> كلمة المرور مطلوبة</p>
+                        }
+                        @if (loginform.get('password')?.errors?.['minlength']) {
+                        <p class="m-0 p-1">كلمة المرور لا تقل عن 6 احرف</p>
+                        }
+                    </div>
+                    }
+                </div>
+                <button class="bg-primary btn text-white ms-auto mt-3 d-block w-100">
+                    @if (!isloading) {
+                    <h4> تسجيل الدخول </h4>
+                    }
+                    @if (isloading) {
+                    <i class="fas fa-spinner fa-spin ms-2"></i>
+                    }
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
