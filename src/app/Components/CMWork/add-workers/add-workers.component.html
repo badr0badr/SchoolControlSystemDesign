@@ -1,0 +1,59 @@
+@if(apierror){
+<div class="alert alert-danger p-0 mt-1">
+    <p class="m-0 p-1">{{apierror}}</p>
+</div>
+}
+
+<div class="row my-4 ">
+    <div class="align-item-center col-md-8 mx-auto p-4">
+        <h3 class="text-center">إضافة عضو كنترول</h3>
+        <div class="col-md-12 mt-2">
+            <label for="" class="fw-bold"> المعلم </label>
+            <select class="form-control" name="TeacherId" [(ngModel)]="TeacherId" required>
+                <option *ngFor="let opt of TeacherIds" value={{opt.id}}>{{ opt.name }}</option>
+            </select>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="" class="fw-bold"> الوظيفة </label>
+            <select class="form-control" name="TeacherId" [(ngModel)]="controlType" required>
+                <option *ngFor="let opt of ControlTypes" value={{opt.id}}>{{ opt.name }}</option>
+            </select>
+        </div>
+        <button (click)="AddControlTeacher()" class="btn btn-primary ms-auto mt-3 d-block">
+            <span>إضافة</span>
+        </button>
+    </div>
+</div>
+@if(TeachersControl.length>0){
+<div class="mt-5">
+    <table class="table table-responsive table-bordered table-striped text-center ">
+        <thead class="table-primary">
+            <tr>
+                <th>اسم المعلم</th>
+                <th>الوظيفة</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Pa of TeachersControl">
+                <td>{{Pa.name}}</td>
+                <td>{{Pa.controlType}}</td>
+                <td><button (click)="ViewAlert(Pa.id,Pa.name)" class="btn btn-danger">حذف</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+}
+@if(VAlert){
+<div class="ViewAlert position-fixed z-3 top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center">
+    <div class="bg-white p-5 rounded">
+        <div class="text-center my-4">
+            <h3>هل تريد تأكيد حذف {{DeleteTeacherName}} من الكنترول</h3>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <button (click)="ConfirmDelete()" class="btn btn-primary">تأكيد </button>
+            <button (click)="ViewAlert(0,'')" class="btn btn-primary">إلغاء</button>
+        </div>
+    </div>
+</div>
+}

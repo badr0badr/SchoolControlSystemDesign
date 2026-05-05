@@ -13,6 +13,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QrScannerComponent } from "./Components/qr-scanner/qr-scanner.component";
 import { AddAppliedExamComponent } from "./Components/\u0650AdderWork/add-applied-exam/add-applied-exam.component";
 import { PdfsComponent } from "./Components/ViewerWork/pdfs/pdfs.component";
+import { AddWorkersComponent } from "./Components/CMWork/add-workers/add-workers.component";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -29,6 +30,7 @@ import { PdfsComponent } from "./Components/ViewerWork/pdfs/pdfs.component";
     FormsModule,
     QrScannerComponent,
     AddAppliedExamComponent,
-    PdfsComponent
+    PdfsComponent,
+    AddWorkersComponent
 ], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

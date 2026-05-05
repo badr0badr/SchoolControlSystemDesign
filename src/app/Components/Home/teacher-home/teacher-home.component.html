@@ -34,6 +34,12 @@
           <a class="nav-link" (click)="ChangSection('ControlPdfs')">الملفات</a>
         </li>
         }
+        @if(Userdata.controlType==='ControlManager')
+        {
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('AddToControl')">إضافة اعضاء</a>
+        </li>
+        }
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -58,6 +64,11 @@
   @if(SectionName==='ControlPdfs') {
   <section>
     <app-pdfs></app-pdfs>
+  </section>
+  }
+    @if(SectionName==='AddToControl') {
+  <section>
+    <app-add-workers></app-add-workers>
   </section>
   }
 </div>
