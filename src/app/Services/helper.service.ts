@@ -49,6 +49,9 @@ export class HelperService {
   GetTeacher(data: SendData): Observable<IdNumberNameView[]> {
     return this._HttpClient.post<IdNumberNameView[]>(`${this.BaseUrl}/api/Helper/GetTeachers`, data, { headers: this.header });
   }
+    GetAllTeachers(data: SendData): Observable<IdNumberNameView[]> {
+    return this._HttpClient.post<IdNumberNameView[]>(`${this.BaseUrl}/api/Helper/GetAllTeachers`, data, { headers: this.header });
+  }
   GetTitle(): Observable<IdNumberNameView[]> {
     return this._HttpClient.post<IdNumberNameView[]>(`${this.BaseUrl}/api/Helper/GetAllTeacherTitles`, {}, { headers: this.header });
   }

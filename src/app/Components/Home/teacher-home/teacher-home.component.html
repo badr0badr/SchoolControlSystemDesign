@@ -27,6 +27,12 @@
         <li class="nav-item">
           <a class="nav-link" (click)="ChangSection('AddAppliedExam')">الإمتحان العملي</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('AddExamResult')">نتائج الإمتحان</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="ChangSection('AddSecriteCodes')">الاكواد السرية</a>
+        </li>
         }
         @if(Userdata.controlType==='Viewer')
         {
@@ -77,6 +83,16 @@
     @if(SectionName==='HallSummaryData') {
   <section>
     <app-hall-summary-data></app-hall-summary-data>
+  </section>
+  }
+  @if(SectionName==='AddExamResult') {
+  <section>
+    <app-add-exam-result></app-add-exam-result>
+  </section>
+  }
+  @if(SectionName==='AddSecriteCodes') {
+  <section>
+    <app-view-secrite-code></app-view-secrite-code>
   </section>
   }
 </div>

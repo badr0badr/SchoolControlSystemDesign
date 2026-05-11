@@ -11,10 +11,12 @@ import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@an
 import { CommonModule } from '@angular/common';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QrScannerComponent } from "./Components/qr-scanner/qr-scanner.component";
-import { AddAppliedExamComponent } from "./Components/\u0650AdderWork/add-applied-exam/add-applied-exam.component";
+import { AddAppliedExamComponent } from "./Components/AdderWork/add-applied-exam/add-applied-exam.component";
 import { PdfsComponent } from "./Components/ViewerWork/pdfs/pdfs.component";
 import { AddWorkersComponent } from "./Components/CMWork/add-workers/add-workers.component";
 import { HallSummaryDataComponent } from "./Components/ViewerWork/hall-summary-data/hall-summary-data.component";
+import { AddExamResultComponent } from "./Components/AdderWork/add-exam-result/add-exam-result.component";
+import { ViewSecriteCodeComponent } from "./Components/AdderWork/view-secrite-code/view-secrite-code.component";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -33,6 +35,8 @@ import { HallSummaryDataComponent } from "./Components/ViewerWork/hall-summary-d
     AddAppliedExamComponent,
     PdfsComponent,
     AddWorkersComponent,
-    HallSummaryDataComponent
+    HallSummaryDataComponent,
+    AddExamResultComponent,
+    ViewSecriteCodeComponent
 ], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

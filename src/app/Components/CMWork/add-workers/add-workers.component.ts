@@ -42,7 +42,7 @@ export class AddWorkersComponent {
   GetTeacher() {
     this._Share.changeisloading(true);
     let SendData = { request: this.Userdata.schoolId, token: this.Userdata.token } as SendData;
-    this._HelperService.GetTeacher(SendData).subscribe({
+    this._HelperService.GetAllTeachers(SendData).subscribe({
       next: (response) => {
         if (response) {
           this.TeacherIds = response;

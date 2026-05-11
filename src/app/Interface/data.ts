@@ -36,3 +36,8 @@ export interface HallSammryData {
   sM: string;
 }
 
+export interface StudentTackit {
+  studentName: string;
+  hallNumber: number;
+  placeNumber: number;
+}

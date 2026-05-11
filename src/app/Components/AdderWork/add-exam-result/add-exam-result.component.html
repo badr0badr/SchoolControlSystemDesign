@@ -1,0 +1,35 @@
+@if (apierror) {
+<div class="alert alert-danger p-0 mt-1">
+    <p class="m-0 p-1">{{apierror}}</p>
+</div>
+}
+@if(!VAlert){
+<div class="scanner-container">
+    <zxing-scanner (scanSuccess)="onCodeResult($event)" (permissionResponse)="onPermissionResponse($event)">
+    </zxing-scanner>
+    <div class="scan-frame"></div>
+</div>
+}
+@if (VAlert) {
+<div class="ViewAlert position-fixed z-3 top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center">
+    <div class="bg-white p-5 rounded">
+        <div class="text-center my-4">
+            @if (apierror) {
+            <div class="alert alert-danger p-0 mt-1">
+                <p class="m-0 p-1">{{apierror}}</p>
+            </div>
+            }
+            <div class="col-md-12 mb-3">
+                <label class="fw-bold mb-1">اسم الطالب</label>
+                <input type="number" class="form-control" [(ngModel)]="Score" placeholder="أدخل الدرجة">
+            </div>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <button (click)="AddExamResult()" [disabled]="Score < 0 && Score > 30"
+                class="btn btn-primary">تأكيد</button>
+            <p [hidden]="Score => 0 && Score <= 30"></p>
+            <button (click)="VAlert=false" class="btn btn-primary">إلغاء</button>
+        </div>
+    </div>
+</div>
+}
